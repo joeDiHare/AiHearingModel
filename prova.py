@@ -11,13 +11,13 @@ names = set()
 for line in open(os.path.join(path_file,'words.txt')):
     if len(line.strip())>3 and len(line.strip())<15:
         names.add(line.strip().lower())
-
+NAMES = names
 
 chars = list('abcdefghijklmnopqrstuvwxyz') + ['<END>', '<NULL>']
 indices_for_chars = {c: i for i, c in enumerate(chars)}
 
 
-NAME_MAX_LEN = 10 # include the <END> char
+NAME_MAX_LEN = 15 # include the <END> char
 
 
 def name_to_vec(name, maxlen=NAME_MAX_LEN):
@@ -44,8 +44,8 @@ def vec_to_name(vec):
 
 
 print(name_to_vec('nate'))
-assert vec_to_name(name_to_vec('nate')) == 'nate'
-assert vec_to_name(name_to_vec('aaaaaaaaaaaa')) == 'aaaaaaaaa'
+print(vec_to_name(name_to_vec('nate')) == 'nate')
+print(vec_to_name(name_to_vec('aaaaaaaaaaaa')) == 'aaaaaaaaaaaa')
 
 
 name_vecs = np.array([name_to_vec(n) for n in names])
@@ -62,17 +62,11 @@ def weight_var(shape, stddev=0.1, weight_decay=0, name=None):
         l2 = tf.nn.l2_loss(v) * weight_decay
         tf.add_to_collection('losses', l2)
     return v
-
-
-
-
 def leaky_relu(x, leak=0.2, name="lrelu"):
     with tf.variable_scope(name):
         f1 = 0.5 * (1 + leak)
         f2 = 0.5 * (1 - leak)
         return f1 * x + f2 * abs(x)
-
-
 def relu(x):
     # return tf.nn.relu(x)
     return leaky_relu(x)
@@ -222,9 +216,9 @@ else:
 # Train
 train = True
 while train:
-    names = name_vecs[np.random.randint(name_vecs.shape[0], size=64), :]
+    nnames = name_vecs[np.random.randint(name_vecs.shape[0], size=64), :]
     feed_dict = {
-        name_placeholder: names,
+        name_placeholder: nnames,
         z_input: np.zeros((64, Z_SIZE)),
         use_z_input: 0,
         learn_rate: 0.001
@@ -235,7 +229,7 @@ while train:
         print("Step: {0}; loss: {1}".format(step_, loss_))
         # print names[0]
         # print output_[0]
-        print(" example encoding: {} -> {}".format(vec_to_name(names[0]), vec_to_name(output_[0])))
+        print(" example encoding: {} -> {}".format(vec_to_name(nnames[0]), vec_to_name(output_[0])))
         if step_ % 600 == 0:
             saver.save(session, save_path + '/model.ckpt', global_step=step_)
             print('Saved')

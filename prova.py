@@ -248,8 +248,10 @@ def reconstruct(name):
 
 #
 
+import itertools
 
-for name in ['nate', 'will', 'chen', 'atty', 'arielle', 'nathaniel', 'kimberly', 'erica', 'zoe']:
+top5 = itertools.islice(names, 5)
+for name in list(names)[:10]:#['nate', 'will', 'chen', 'atty', 'arielle', 'nathaniel', 'kimberly', 'erica', 'zoe']:
     print(name, '->', reconstruct(name))
 for name in ['word', 'happy', 'winter', 'candle', 'cherish']:
     print(name, '->', reconstruct(name))
@@ -260,13 +262,9 @@ for name in ['ufhoe', 'xyzy', 'ihwrfoecoei']:
     print(name, '->', reconstruct(name))
 
 
-
-
 def nameliness(word):
     r = reconstruct(word)
     return sum([1 if a == b else 0 for a, b in zip(word, r)]) / float(len(word))
-
-
 for name in ['nate', 'july', 'fridge', 'gienigoe', 'chzsiucf', 'xyxyzzy']:
     print(name, ':', nameliness(name))
 
@@ -288,10 +286,7 @@ def make_batches(list, size=128):
     return batches
 
 
-
-
 embeddings = {}
-
 
 for batch in make_batches(list(names)):
     feed_dict = {
@@ -304,7 +299,6 @@ for batch in make_batches(list(names)):
         # print(name,vec)
         embeddings[tuple(name)] = vec
 
-
 def embed(name):
     feed_dict = {
         name_placeholder: np.array([name_to_vec(name)]),
@@ -313,14 +307,10 @@ def embed(name):
     }
     output_ = session.run(z_mean, feed_dict=feed_dict)
     return output_[0]
-
-
 def nearest(embedding):
     def distance(name):
         return np.linalg.norm(embedding - embeddings[name])
     return ''.join(min(embeddings.keys(), key=distance))
-
-
 def unembed(embedding):
     feed_dict = {
         name_placeholder: np.zeros((1, NAME_MAX_LEN)),
@@ -338,7 +328,6 @@ print(unembed(embed('nate')) == 'nate')
 for name in ['nate', 'yikes', 'panda', 'ixzhxzi', 'justxn']: print(name, 'is closest to', (nearest(embed(name))))
 
 
-#
 # what happens if we try to interpolate names?
 def blend_names(name1, name2):
     e1 = embed(name1)
@@ -346,7 +335,6 @@ def blend_names(name1, name2):
     for i in range(11):
         blend = i / 10.0
         print(unembed(e1 * (1 - blend) + e2 * blend))
-
 
 blend_names('amy', 'francisco')
 blend_names('nathaniel', 'chen')

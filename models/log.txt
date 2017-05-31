@@ -1,0 +1,2 @@
+At step 1368200, loss: nan. This corresponds to approx 2 days 14 hours. 
+Total computation took 86 hours before it was interrupted.

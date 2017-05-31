@@ -233,6 +233,8 @@ while train:
         if step_ % 600 == 0:
             saver.save(session, save_path + '/model.ckpt', global_step=step_)
             print('Saved')
+    if step_ > 1000000:
+        train=False
 
 
 def reconstruct(name):

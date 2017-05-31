@@ -2,37 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="545374c4-5bac-4bc4-9265-05948ad3b357" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-28800.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-28800.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-28800.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-29400.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-29400.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-29400.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30000.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30000.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30600.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30600.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-30600.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-31200.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-31200.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0 - Copy/model.ckpt-31200.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67200.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67200.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67200.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67800.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67800.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-67800.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-68400.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-68400.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-68400.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69000.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69000.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69600.data-00000-of-00001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69600.index" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-69600.meta" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/md0 - Copy/checkpoint" afterPath="$PROJECT_DIR$/models/md0 - Copy/checkpoint" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-475800.data-00000-of-00001" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-475800.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-475800.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-476400.data-00000-of-00001" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-476400.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-476400.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477000.data-00000-of-00001" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477000.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477000.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477600.data-00000-of-00001" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477600.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-477600.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-478200.data-00000-of-00001" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-478200.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/md0/model.ckpt-478200.meta" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/md0/checkpoint" afterPath="$PROJECT_DIR$/models/md0/checkpoint" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prova.py" afterPath="$PROJECT_DIR$/prova.py" />
     </list>
@@ -55,8 +39,8 @@
       <file leaf-file-name="prova.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prova.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="354" column="0" lean-forward="false" selection-start-line="354" selection-start-column="0" selection-end-line="366" selection-end-column="44" />
+            <state relative-caret-position="431">
+              <caret line="236" column="19" lean-forward="false" selection-start-line="236" selection-start-column="19" selection-end-line="236" selection-end-column="19" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -342,8 +326,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38733125" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21703011" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38733125" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21703011" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -368,8 +352,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/prova.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="354" column="0" lean-forward="false" selection-start-line="354" selection-start-column="0" selection-end-line="366" selection-end-column="44" />
+        <state relative-caret-position="431">
+          <caret line="236" column="19" lean-forward="false" selection-start-line="236" selection-start-column="19" selection-end-line="236" selection-end-column="19" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

@@ -19,7 +19,6 @@ indices_for_chars = {c: i for i, c in enumerate(chars)}
 
 NAME_MAX_LEN = 15 # include the <END> char
 
-
 def name_to_vec(name, maxlen=NAME_MAX_LEN):
     v = np.zeros(maxlen, dtype=int)
     null_idx = indices_for_chars['<NULL>']
@@ -30,8 +29,6 @@ def name_to_vec(name, maxlen=NAME_MAX_LEN):
         v[i] = n
     v[min(len(name), maxlen-1)] = indices_for_chars['<END>']
     return v
-
-
 def vec_to_name(vec):
     name = ''
     for x in vec:
@@ -41,21 +38,11 @@ def vec_to_name(vec):
         elif char == '<END>':
             return name
     return name
-
-
-print(name_to_vec('nate'))
-print(vec_to_name(name_to_vec('nate')) == 'nate')
-print(vec_to_name(name_to_vec('aaaaaaaaaaaa')) == 'aaaaaaaaaaaa')
+print('name_to_vec("nate") --> ',name_to_vec('nate'))
 
 
 name_vecs = np.array([name_to_vec(n) for n in names])
-print(name_vecs.shape)
-
-
-#
-
-
-def weight_var(shape, stddev=0.1, weight_decay=0, name=None):
+def weight_var(shape, stddev=0.1, weight_decay=0.0, name=None):
     initial = tf.truncated_normal(shape, stddev=stddev)
     v = tf.Variable(initial, name=name)
     if weight_decay > 0:
@@ -72,32 +59,25 @@ def relu(x):
     return leaky_relu(x)
 
 
-# from tensorflow import create_batch_norm
-
-
 def create_conv(input, out_channels, patch_size=5, stride=1, batch_norm=False, dropout=False):
     in_channels = input.get_shape()[-1].value
     w = weight_var([patch_size, patch_size, in_channels, out_channels])
     b = weight_var([out_channels], stddev=0)
     conv = tf.nn.conv2d(input, w, strides=[1, stride, stride, 1], padding='SAME')
-    if batch_norm: conv = create_batch_norm(conv)
+    # if batch_norm: conv = create_batch_norm(conv)
     activation = relu(conv + b)
-    if dropout: activation = create_dropout(activation)
+    # if dropout: activation = create_dropout(activation)
     return activation
-
-
 def text_conv(input, out_channels, patch_size=5, stride=1, dropout=False, pool_size=1):
     in_channels = input.get_shape()[-1].value
     w = weight_var([patch_size, in_channels, out_channels])
     b = weight_var([out_channels], stddev=0)
     conv = tf.nn.conv1d(input, w, stride=stride, padding='SAME')
     activation = relu(conv + b)
-    # TODO: max_pooling
-    if dropout: activation = create_dropout(activation)
+    # if dropout: activation = create_dropout(activation)
     return activation
-
-def create_dropout(units):
-    return tf.nn.dropout(units, dropout)
+# def create_dropout(units):
+#     return tf.nn.dropout(units, dropout)
 
 def create_fc(input, out_size):
     # input_dropped = tf.nn.dropout(input, dropout_keep_prob)
@@ -109,31 +89,28 @@ def create_fc(input, out_size):
 
 name_placeholder = tf.placeholder(shape=[None, NAME_MAX_LEN], dtype=tf.int32, name='names')
 
-
-#
+############################################################################################################################################
 Z_SIZE = 64
 
 def encoder_lstm(names):
     with tf.variable_scope('encoder'):
-        cells = [tf.nn.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [len(chars), 64]]
-        lstm = tf.nn.rnn_cell.MultiRNNCell(cells, state_is_tuple=True)
-        # cells = [tf.contrib.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [len(chars), 64]]
-        # lstm = tf.contrib.rnn_cell.MultiRNNCell(cells, state_is_tuple=True)
+        cells   = [tf.nn.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [len(chars), Z_SIZE]]
+        lstm    = tf.nn.rnn_cell.MultiRNNCell(cells, state_is_tuple=True)
         one_hot = tf.one_hot(names, len(chars), dtype=tf.float32)
         outputs, state = tf.nn.dynamic_rnn(lstm, one_hot, dtype=tf.float32)
-        outputs_flat = tf.reshape(outputs, [-1, 64 * NAME_MAX_LEN])
-        z_mean = create_fc(outputs_flat, Z_SIZE)
+        outputs_flat = tf.reshape(outputs, [-1, Z_SIZE * NAME_MAX_LEN])
+        z_mean   = create_fc(outputs_flat, Z_SIZE)
         z_stddev = create_fc(outputs_flat, Z_SIZE)
         return z_mean, z_stddev
-def encoder_conv(names):
-    with tf.variable_scope('encoder'):
-        one_hot = tf.one_hot(names, len(chars), dtype=tf.float32)
-        conv1 = text_conv(one_hot, 64)
-        conv2 = text_conv(one_hot, 64)
-        fc1 = create_fc(tf.reshape(conv2, [-1, NAME_MAX_LEN * 64]), 128)
-        z_mean = create_fc(fc1, Z_SIZE)
-        z_stddev = create_fc(fc1, Z_SIZE)
-        return z_mean, z_stddev
+# def encoder_conv(names):
+#     with tf.variable_scope('encoder'):
+#         one_hot = tf.one_hot(names, len(chars), dtype=tf.float32)
+#         conv1 = text_conv(one_hot, Z_SIZE)
+#         # conv2 = text_conv(one_hot, 64)
+#         fc1 = create_fc(tf.reshape(conv1, [-1, NAME_MAX_LEN * Z_SIZE]), 2*Z_SIZE)
+#         z_mean   = create_fc(fc1, Z_SIZE)
+#         z_stddev = create_fc(fc1, Z_SIZE)
+#         return z_mean, z_stddev
 # def generator(noise, name='generator'):
 #     with tf.variable_scope(name, reuse=None):
 #         cells = [tf.nn.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [NOISE_SIZE, 256, len(chars)]]
@@ -143,9 +120,8 @@ def encoder_conv(names):
 #         output_chars = tf.reshape(tf.argmax(tf.nn.softmax(outputs), axis=2), [-1, NAME_MAX_LEN])
 #         output_chars = tf.cast(output_chars, tf.int32)
 #     return output_chars
-
-
 # generated_names = generator(noise)
+
 z_mean, z_stddev = encoder_lstm(name_placeholder)
 
 
@@ -163,7 +139,7 @@ z_vals = sample_z(z_mean, z_stddev)
 
 def decoder_lstm(z):
     z_repeated_over_time = tf.tile(tf.reshape(z, [-1, 1, Z_SIZE]), [1, NAME_MAX_LEN, 1])
-    cells = [tf.nn.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [Z_SIZE, 256, len(chars)]]
+    cells = [tf.nn.rnn_cell.LSTMCell(size, state_is_tuple=True) for size in [Z_SIZE, 2*2*Z_SIZE, len(chars)]]
     lstm = tf.nn.rnn_cell.MultiRNNCell(cells, state_is_tuple=True)
     outputs, state = tf.nn.dynamic_rnn(lstm, z_repeated_over_time, dtype=tf.float32)
     return outputs
